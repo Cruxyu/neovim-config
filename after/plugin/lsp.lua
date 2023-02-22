@@ -6,7 +6,6 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   -- Replace these with whatever servers you want to install
   'rust_analyzer',
-  'sumneko_lua',
   'pyright',
 })
 
