@@ -7,6 +7,8 @@ lsp.ensure_installed({
   -- Replace these with whatever servers you want to install
   'rust_analyzer',
   'pyright',
+  'pylsp',
+  'ruff_lsp',
 })
 
 
@@ -59,3 +61,19 @@ vim.diagnostic.config({
 
 vim.keymap.set("n", "<leader>rl", ":LspRestart<CR>")
 
+require('lspconfig')['ruff_lsp'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require('lspconfig')['tsserver'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require('lspconfig')['rust_analyzer'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    -- Server-specific settings...
+    settings = {
+      ["rust-analyzer"] = {}
+    }
+}
